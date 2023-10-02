@@ -1,9 +1,8 @@
 const express = require("express");
 require("dotenv").config();
-const fetchBlogData = require("./middleware/blogApi");
-const blogRoute = require("./routes/blog");
-const speedChecker = require("./middleware/speedChecker");
-const { handleError } = require("./utils/errorHandle");
+const fetchBlogData = require("./middleware/blog");
+const blogRoute = require("./routes/blogRoute");
+const { handleError } = require("./utils/errorHandler");
 
 const app = express();
 
@@ -11,7 +10,6 @@ const app = express();
 const port = 3000 || process.env.PORT;
 
 //!Middlewares
-app.use(speedChecker);
 app.use(fetchBlogData);
 app.use((err, req, res, next) => {
   console.log(err);
